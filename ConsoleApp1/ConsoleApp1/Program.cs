@@ -9,8 +9,15 @@ namespace ConsoleApp1
     {
         public static async Task Main(string[] args)
         {
+
+            if (args.Length == 0)
+            {
+                throw new ArgumentNullException("Nie podano żadnego adresu strony");
+            }
+            var url = args[0];
+
             var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync("https://www.pja.edu.pl/");
+            var response = await httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
