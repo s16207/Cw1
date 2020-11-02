@@ -10,8 +10,11 @@ namespace ConsoleApp1
     {
         public static async Task Main(string[] args)
         {
-
-            var url = "https://www.pja.edu.pl";
+            if(args.Length == 0)
+            {
+                throw new ArgumentNullException("Nie podano żadnego adresu strony");
+            }
+            var url = args[0];
 
             bool result = Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
