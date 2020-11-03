@@ -34,7 +34,7 @@ namespace ConsoleApp1
         {
             try
             {
-                var httpClient = new HttpClient();
+                using HttpClient httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
@@ -86,7 +86,7 @@ namespace ConsoleApp1
                 Console.WriteLine("\n Blad pobierania strony");
                 Console.WriteLine("Message :{0} ", e.Message);
             }
-
+            
         }
     }
 }
